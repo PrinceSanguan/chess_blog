@@ -150,8 +150,12 @@
 <main class="form-signin w-100 m-auto">
   <form method="post">
     <img class="mb-4 shadow" src="./assets/images/logo.png" alt="" width="300" height="57" style="object-fit: fill;">
-    <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Please sign in</h1>
+    <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Create Account</h1>
 
+    <div class="form-floating">
+      <input type="text" name="username" class="form-control mb-2" id="floatingInput" placeholder="Username">
+      <label for="floatingInput">Username</label>
+    </div>
     <div class="form-floating">
       <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
@@ -160,16 +164,20 @@
       <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
+    <div class="form-floating">
+      <input name="retype_password" type="password" class="form-control" id="floatingPassword" placeholder="Retype Password">
+      <label for="floatingPassword">Retype Password</label>
+    </div>
 
-    <div class="my-2">Dont have an Account? <a href="signup.php">Signup here</a></div>
+    <div class="my-2">Already have an Account? <a href="login.php">Login here</a></div>
 
     <div class="form-check text-start my-3">
-      <input name="remember" class="form-check-input" type="checkbox" value="1" id="flexCheckDefault">
+      <input name="terms" class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
       <label class="form-check-label" for="flexCheckDefault">
-        Remember me
+        Accept Terms and Conditions
       </label>
     </div>
-    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+    <button class="btn btn-primary w-100 py-2" type="submit">Create</button>
     <p class="mt-5 mb-3 text-body-secondary" style="text-align: center;">&copy; <?php echo date("Y")?></p>
   </form>
 </main>
