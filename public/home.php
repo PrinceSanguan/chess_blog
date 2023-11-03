@@ -25,10 +25,9 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-          <li><a href="#" class="nav-link px-2 link-body-emphasis">Inventory</a></li>
-          <li><a href="#" class="nav-link px-2 link-body-emphasis">Customers</a></li>
-          <li><a href="#" class="nav-link px-2 link-body-emphasis">Products</a></li>
+          <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+          <li><a href="#" class="nav-link px-2 link-body-emphasis">Blog</a></li>
+          <li><a href="#" class="nav-link px-2 link-body-emphasis">Contact</a></li>
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -40,9 +39,9 @@
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
             <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Admin</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Sign out</a></li>
           </ul>
@@ -80,7 +79,49 @@
 <!--End Slider--->
 
   <main class="p-2">
-    <h1>My Content</h1>
+    <h3 class="mx-4">Featured</h3>
+
+    <!-- posting eto yun-->
+
+    <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary-emphasis">Former PUP Team Captain</strong>
+          <h3 class="mb-0">Johnpaul Aquino</h3>
+          <div class="mb-1 text-body-secondary">Born: Januart 7 1995</div>
+          <p class="card-text mb-auto">Galing sa isang Sikat na unibersidad kilalang kilabot ng mga bebot</p>
+          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+            Continue reading
+            <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+          </a>
+        </div>
+        <div class="col-lg-5 col-12 d-lg-block">
+          <img class="bd-placeholder-img w-100" width="200" height="250" src="assets/images/3.jpg" style="object-fit: cover;" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success-emphasis">Secret Weapon of RTU</strong>
+          <h3 class="mb-0">Dionisio Samillano</h3>
+          <div class="mb-1 text-body-secondary">Born: June 7 1996</div>
+          <p class="mb-auto">Pinakatatagong Armas ng RTU kung saan magugulat ang ibang school kapag sya ay Nilabas</p>
+          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+            Continue reading
+            <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+          </a>
+        </div>
+        <div class="col-lg-5 col-12 d-lg-block">
+          <img class="bd-placeholder-img w-100" width="200" height="250" src="assets/images/4.jpg" style="object-fit: cover;" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- posting end eto yun-->
+
+
   </main>
 
 <!--footer-->
