@@ -1,18 +1,17 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="../assets/js/color-modes.js"></script>
-
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.118.2">
     <title>Home - My Blog</title>
 
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-icons.css" rel="stylesheet">
+    <link href="<?=ROOT?>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=ROOT?>/assets/css/bootstrap-icons.css" rel="stylesheet">
 
     
     <!-- Custom styles for this template -->
-    <link href="assets/css/headers.css" rel="stylesheet">
+    <link href="<?=ROOT?>/assets/css/headers.css" rel="stylesheet">
   </head>
 
   <body>
@@ -21,7 +20,7 @@
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-          <img class="bi me-2" src="assets/images/logo.png" width="40" height="32" style="object-fit: cover;">
+          <img class="bi me-2" src="<?=ROOT?>/assets/images/logo.png" width="40" height="32" style="object-fit: cover;">
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -52,25 +51,25 @@
 
   <!-- Slider--->
 
-    <link rel="stylesheet" href="assets/slider/ism/css/my-slider.css"/>
-    <script src="assets/slider/ism/js/ism-2.2.min.js"></script>
+    <link rel="stylesheet" href="<?=ROOT?>/assets/slider/ism/css/my-slider.css"/>
+    <script src="<?=ROOT?>/assets/slider/ism/js/ism-2.2.min.js"></script>
 
 <div class="ism-slider" data-transition_type="fade" data-play_type="loop" id="my-slider">
   <ol>
     <li>
-      <img src="assets/slider/ism/image/slides/flower-729514_1280.jpg">
+      <img src="<?=ROOT?>/assets/slider/ism/image/slides/flower-729514_1280.jpg">
       <div class="ism-caption ism-caption-0">My slide caption text</div>
     </li>
     <li>
-      <img src="assets/slider/ism/image/slides/beautiful-701678_1280.jpg">
+      <img src="<?=ROOT?>/assets/slider/ism/image/slides/beautiful-701678_1280.jpg">
       <div class="ism-caption ism-caption-0">My slide caption text</div>
     </li>
     <li>
-      <img src="assets/slider/ism/image/slides/summer-192179_1280.jpg">
+      <img src="<?=ROOT?>/assets/slider/ism/image/slides/summer-192179_1280.jpg">
       <div class="ism-caption ism-caption-0">My slide caption text</div>
     </li>
     <li>
-      <img src="assets/slider/ism/image/slides/city-690332_1280.jpg">
+      <img src="<?=ROOT?>/assets/slider/ism/image/slides/city-690332_1280.jpg">
       <div class="ism-caption ism-caption-0">My slide caption text</div>
     </li>
   </ol>
@@ -97,7 +96,7 @@
           </a>
         </div>
         <div class="col-lg-5 col-12 d-lg-block">
-          <img class="bd-placeholder-img w-100" width="200" height="250" src="assets/images/3.jpg" style="object-fit: cover;" alt="">
+          <img class="bd-placeholder-img w-100" width="200" height="250" src="<?=ROOT?>/assets/images/3.jpg" style="object-fit: cover;" alt="">
         </div>
       </div>
     </div>
@@ -114,7 +113,7 @@
           </a>
         </div>
         <div class="col-lg-5 col-12 d-lg-block">
-          <img class="bd-placeholder-img w-100" width="200" height="250" src="assets/images/4.jpg" style="object-fit: cover;" alt="">
+          <img class="bd-placeholder-img w-100" width="200" height="250" src="<?=ROOT?>/assets/images/4.jpg" style="object-fit: cover;" alt="">
         </div>
       </div>
     </div>
@@ -186,7 +185,7 @@
   </footer>
 </div>
   
-<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?=ROOT?>/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>

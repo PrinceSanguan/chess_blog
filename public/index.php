@@ -1,10 +1,21 @@
 <?php
 
+define('ROOT', "http://localhost/chess_blog/public");
+
 $url = $_GET['url'] ?? "home";
 $url = explode("/", $url);
 
+$page_name = trim($url[0]);
+$filename = "../app/pages/".$page_name.".php";
 
-echo "<pre>";
-print_r($url);
+if(file_exists($filename))
+{
+  require_once $filename;
+} else {
+  require_once $filename = "../app/pages/404.php";
+}
 
-//echo "home page";
+// echo "<pre>";
+// echo $filename;
+// print_r($url);
+// echo "home page";

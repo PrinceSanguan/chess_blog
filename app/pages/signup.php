@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="../assets/js/color-modes.js"></script>
+  <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-    <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=ROOT?>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -92,7 +92,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="./assets/css/sign-in.css" rel="stylesheet">
+    <link href="<?=ROOT?>/assets/css/sign-in.css" rel="stylesheet">
   </head>
   <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -149,7 +149,9 @@
     
 <main class="form-signin w-100 m-auto">
   <form method="post">
-    <img class="mb-4 shadow" src="./assets/images/logo.png" alt="" width="300" height="57" style="object-fit: fill;">
+    <a href="home">
+      <img class="mb-4 shadow" src="<?=ROOT?>/assets/images/logo.png" alt="" width="300" height="57" style="object-fit: fill;">
+    </a>
     <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Create Account</h1>
 
     <div class="form-floating">
@@ -169,7 +171,7 @@
       <label for="floatingPassword">Retype Password</label>
     </div>
 
-    <div class="my-2">Already have an Account? <a href="login.php">Login here</a></div>
+    <div class="my-2">Already have an Account? <a href="login">Login here</a></div>
 
     <div class="form-check text-start my-3">
       <input name="terms" class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
@@ -181,7 +183,7 @@
     <p class="mt-5 mb-3 text-body-secondary" style="text-align: center;">&copy; <?php echo date("Y")?></p>
   </form>
 </main>
-<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?=ROOT?>/assets/dist/js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>
