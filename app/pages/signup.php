@@ -171,7 +171,7 @@
       <label for="floatingPassword">Retype Password</label>
     </div>
 
-    <div class="my-2">Already have an Account? <a href="login">Login here</a></div>
+    <div class="my-2">Already have an Account? <a href="<?=ROOT?>/login">Login here</a></div>
 
     <div class="form-check text-start my-3">
       <input name="terms" class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">

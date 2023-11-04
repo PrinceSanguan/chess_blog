@@ -163,7 +163,7 @@
       <label for="floatingPassword">Password</label>
     </div>
 
-    <div class="my-2">Dont have an Account? <a href="signup">Signup here</a></div>
+    <div class="my-2">Dont have an Account? <a href="<?=ROOT?>/signup">Signup here</a></div>
 
     <div class="form-check text-start my-3">
       <input name="remember" class="form-check-input" type="checkbox" value="1" id="flexCheckDefault">

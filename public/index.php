@@ -1,7 +1,5 @@
 <?php
 
-define('ROOT', "http://localhost/chess_blog/public");
-
 $url = $_GET['url'] ?? "home";
 $url = explode("/", $url);
 

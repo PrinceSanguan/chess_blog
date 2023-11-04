@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>Home - My Blog</title>
+    <title>Home - <?=APP_NAME?></title>
 
     <link href="<?=ROOT?>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=ROOT?>/assets/css/bootstrap-icons.css" rel="stylesheet">
@@ -129,10 +129,10 @@
   <footer class="py-5">
     <div class="row">
       <div class="col-6 col-md-2 mb-3">
-        <h5>Section</h5>
+        <h5>Useful Links</h5>
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+          <li class="nav-item mb-2"><a href="<?=ROOT?>/login" class="nav-link p-0 text-body-secondary">Login</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
