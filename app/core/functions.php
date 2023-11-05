@@ -1,1 +1,77 @@
 <?php
+
+
+create_tables();
+function create_tables()
+{
+    $string = "mysql:host=localhost;port=3307"; // Adjust the port as needed
+    $con = new PDO($string, DBUSER, DBPASS);
+
+    // Create the database if it doesn't exist
+    $query = "CREATE DATABASE IF NOT EXISTS " . DBNAME;
+    $stm = $con->prepare($query);
+    $stm->execute();
+
+    // Use database that you created
+    $query = "USE " . DBNAME;
+    $stm = $con->prepare($query);
+    $stm->execute();
+
+    // Create the table for users
+    $query = "CREATE TABLE IF NOT EXISTS users(
+
+      id int primary key auto_increment,
+      username varchar(50) not null,
+      email varchar(100) not null,
+      password varchar(255) not null,
+      image varchar(1024) null,
+      date datetime default current_timestamp,
+      role varchar(10) not null,
+
+      key username (username),
+      key email (email)
+
+    )";
+    $stm = $con->prepare($query);
+    $stm->execute();
+
+    // Create the table for categories
+    $query = "CREATE TABLE IF NOT EXISTS categories(
+
+      id int primary key auto_increment,
+      category varchar(50) not null,
+      slug varchar(100) not null,
+      disabled tinyint default 0,
+      
+
+      key slug (slug),
+      key category (category)
+
+    )";
+    $stm = $con->prepare($query);
+    $stm->execute();
+
+    // Create the table for posts
+    $query = "CREATE TABLE IF NOT EXISTS posts(
+
+      id int primary key auto_increment,
+      user_id int,
+      category_id int,
+      title varchar(100) not null,
+      content text null,
+      image varchar(1024) null,
+      date datetime default current_timestamp,
+      slug varchar(100) not null,
+      
+      key user_id (user_id),
+      key category_id (category_id),
+      key title (title),
+      key slug (slug),
+      key date (date)
+
+    )";
+    $stm = $con->prepare($query);
+    $stm->execute();
+
+
+}
