@@ -1,3 +1,55 @@
+<?php
+
+if(!empty($_POST)) {
+  // validate
+  $errors = [];
+
+  if(empty($_POST["username"]))
+  {
+    $errors["username"] = "A username is required";
+  }else
+  if(preg_match("/^[a-zA-Z]+$/", $_POST["username"]))
+  {
+    $errors["username"] = "Username can only have letters and no spaces";
+  }
+
+  if(empty($_POST["email"]))
+  {
+    $errors["email"] = "A password is required";
+  }else
+  if(strlen($_POST["email"]) < 8)
+  {
+    $errors["email"] = "Password must be 8 character or more";
+  }
+
+  if(empty($_POST["password"]))
+  {
+    $errors["password"] = "A password is required";
+  }else
+  if(strlen($_POST["password"]) < 8)
+  {
+    $errors["password"] = "Password must be 8 character or more";
+  }
+
+
+
+  if(empty($error)) {
+    // save to database
+    $data = [];
+    $data["username"] = $_POST["username"];
+    $data["email"] = $_POST["email"];
+    $data["role"] = $_POST["role"];
+    $data["password"] = $_POST["password"];
+
+    $query = "insert into users (username, email, password, role) values (:username, :email, :password, :role)";
+    query($query, $data);
+
+    redirect("login");
+  }
+}
+
+?>
+
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head>
@@ -187,3 +239,5 @@
 
     </body>
 </html>
+
+2:47 signup.php

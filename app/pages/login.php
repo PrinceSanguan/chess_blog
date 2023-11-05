@@ -1,3 +1,13 @@
+<?php
+
+if(!empty($_POST)) {
+  echo "something was posted";
+}
+
+?>
+
+
+
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head><script src="<?=ROOT?>/assets/js/color-modes.js"></script>

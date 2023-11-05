@@ -1,7 +1,32 @@
 <?php
 
+function query(string $query, array $data = [])
+{
 
-create_tables();
+    $string = "mysql:host=localhost;port=3307;dbname=chess"; 
+    $con = new PDO($string, DBUSER, DBPASS);
+
+    
+    $stm = $con->prepare($query);
+    $stm->execute($data);
+
+    $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+    if(is_array($result) && !empty($result))
+    {
+      return $result;
+    }
+
+    return false;
+}
+
+function redirect($page) {
+  header("Location: ".$page);
+  die;
+}
+
+
+
+//  create_tables();
 function create_tables()
 {
     $string = "mysql:host=localhost;port=3307"; // Adjust the port as needed
