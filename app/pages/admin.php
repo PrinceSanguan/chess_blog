@@ -231,7 +231,7 @@
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
+              <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="<?=ROOT?>/admin">
                 <svg class="bi"><use xlink:href="#house-fill"/></svg>
                 Dashboard
               </a>
@@ -248,7 +248,7 @@
           <ul class="nav flex-column mb-auto">
             <li class="nav-item">
               <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
+                <svg class="bi"><use xlink:href="<?=ROOT?>"/></svg>
                 Front End
               </a>
             </li>
@@ -260,8 +260,8 @@
           <ul class="nav flex-column mb-auto">
 
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <svg class="bi"><use xlink:href="#door-closed"/></svg>
+              <a class="nav-link d-flex align-items-center gap-2" href="<?=ROOT?>/logout">
+                <svg class="bi"><use xlink:href="<?=ROOT?>/logout"/></svg>
                 Sign out
               </a>
             </li>

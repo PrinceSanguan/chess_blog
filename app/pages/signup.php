@@ -8,37 +8,53 @@ if(!empty($_POST)) {
   {
     $errors["username"] = "A username is required";
   }else
-  if(preg_match("/^[a-zA-Z]+$/", $_POST["username"]))
+  if(!preg_match("/^[a-zA-Z]+$/", $_POST["username"]))
   {
     $errors["username"] = "Username can only have letters and no spaces";
   }
 
+  $query = "select id from users where email = :email limit 1";
+  $email = query($query, ["email"=>$_POST["email"]]);
+
   if(empty($_POST["email"]))
   {
-    $errors["email"] = "A password is required";
+    $errors["email"] = "A email is required";
   }else
-  if(strlen($_POST["email"]) < 8)
+  if(!filter_var($_POST["email"],FILTER_VALIDATE_EMAIL))
   {
-    $errors["email"] = "Password must be 8 character or more";
+    $errors["email"] = "Email not Valid";
+  }else
+  if($email)
+  {
+    $errors["email"] = "That email is already in use";
   }
 
-  if(empty($_POST["password"]))
+
+  if (empty($_POST["password"])) 
   {
     $errors["password"] = "A password is required";
-  }else
-  if(strlen($_POST["password"]) < 8)
+  } elseif (strlen($_POST["password"]) < 8) 
   {
-    $errors["password"] = "Password must be 8 character or more";
+    $errors["password"] = "Password must be 8 characters or more";
+  } elseif ($_POST["password"] !== $_POST["retype_password"]) 
+  {
+    $errors["password"] = "Passwords do not match";
+  }
+
+
+  if (empty($_POST["terms"])) 
+  {
+    $errors["terms"] = "Pkease accept the terms";
   }
 
 
 
-  if(empty($error)) {
+  if(empty($errors)) {
     // save to database
     $data = [];
     $data["username"] = $_POST["username"];
     $data["email"] = $_POST["email"];
-    $data["role"] = $_POST["role"];
+    $data["role"] = "user";
     $data["password"] = $_POST["password"];
 
     $query = "insert into users (username, email, password, role) values (:username, :email, :password, :role)";
@@ -46,7 +62,7 @@ if(!empty($_POST)) {
 
     redirect("login");
   }
-}
+  }
 
 ?>
 
@@ -206,31 +222,56 @@ if(!empty($_POST)) {
     </a>
     <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Create Account</h1>
 
+    <?php if(!empty($errors)):?>
+      <div class="alert alert-danger">Please fix the error below</div>
+    <?php endif;?>
+
     <div class="form-floating">
-      <input type="text" name="username" class="form-control mb-2" id="floatingInput" placeholder="Username">
+      <input value="<?= old_value("username") ?>" type="text" name="username" class="form-control mb-2" id="floatingInput" placeholder="Username">
       <label for="floatingInput">Username</label>
     </div>
+    <?php if (!empty($errors["username"])):?>
+      <div class="text-danger"><?=$errors["username"]?></div>
+    <?php endif;?>
+
+
     <div class="form-floating">
-      <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input value="<?= old_value("email") ?>" name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
     </div>
+    <?php if (!empty($errors["email"])):?>
+      <div class="text-danger"><?=$errors["email"]?></div>
+    <?php endif;?>
+
+
     <div class="form-floating">
-      <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input value="<?= old_value("password") ?>" name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
+    <?php if (!empty($errors["password"])):?>
+      <div class="text-danger"><?=$errors["password"]?></div>
+    <?php endif;?>
+
+
     <div class="form-floating">
-      <input name="retype_password" type="password" class="form-control" id="floatingPassword" placeholder="Retype Password">
+      <input value="<?= old_value("retype_password") ?>" name="retype_password" type="password" class="form-control" id="floatingPassword" placeholder="Retype Password">
       <label for="floatingPassword">Retype Password</label>
     </div>
 
     <div class="my-2">Already have an Account? <a href="<?=ROOT?>/login">Login here</a></div>
 
     <div class="form-check text-start my-3">
-      <input name="terms" class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+      <input <?= old_checked("terms")?> name="terms" class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
       <label class="form-check-label" for="flexCheckDefault">
         Accept Terms and Conditions
       </label>
     </div>
+    <?php if (!empty($errors["terms"])):?>
+      <div class="text-danger"><?=$errors["terms"]?></div>
+    <?php endif;?>
+
+
+
     <button class="btn btn-primary w-100 py-2" type="submit">Create</button>
     <p class="mt-5 mb-3 text-body-secondary" style="text-align: center;">&copy; <?php echo date("Y")?></p>
   </form>
@@ -240,4 +281,3 @@ if(!empty($_POST)) {
     </body>
 </html>
 
-2:47 signup.php
