@@ -1,3 +1,13 @@
+<?php
+
+  if(!logged_in()) {
+    redirect("login");
+  }
+
+?>
+
+
+
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head>
@@ -308,6 +318,7 @@
 
       <?php
         $section = $url[1] ?? "dasboard";
+        $action = $url[2] ?? "view";
 
         $filename = "../app/pages/admin/".$section.".php";
 
