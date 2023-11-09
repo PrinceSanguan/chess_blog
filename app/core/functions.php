@@ -19,6 +19,27 @@ function query(string $query, array $data = [])
     return false;
 }
 
+
+function query_row(string $query, array $data = [])
+{
+
+    $string = "mysql:host=localhost;port=3307;dbname=chess"; 
+    $con = new PDO($string, DBUSER, DBPASS);
+
+    
+    $stm = $con->prepare($query);
+    $stm->execute($data);
+
+    $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+    if(is_array($result) && !empty($result))
+    {
+      return $result[0];
+    }
+
+    return false;
+}
+
+
 function redirect($page) {
   header("Location: ".$page);
   die;
