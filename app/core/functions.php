@@ -41,24 +41,36 @@ function query_row(string $query, array $data = [])
 
 
 function redirect($page) {
-  header("Location: ".$page);
+  header('Location: '.ROOT. '/' . $page);
   die;
 }
 
-function old_value($key) {
+function old_value($key, $default = "") {
 
-  if(!empty($_POST[$key]))
-      return $_POST[$key];
-  return "";
-
+  if(!empty($_POST[$key])) 
+    return $_POST[$key];
+    
+  return $default;
 }
 
-function old_checked($key) {
+function old_checked($key, $default = "") {
 
   if(!empty($_POST[$key]))
       return "checked";
+
   return "";
   
+}
+
+function get_image($file)
+{
+	$file = $file ?? '';
+	if(file_exists($file))
+	{
+		return ROOT.'/'.$file;
+	}
+
+	return ROOT.'/assets/images/3.jpg';
 }
 
 
@@ -74,6 +86,80 @@ function str_to_url($url)
 
   return $url;
 }
+
+
+function resize_image($filename, $max_size = 1000)
+{
+	
+	if(file_exists($filename))
+	{
+		$type = mime_content_type($filename);
+		switch ($type) {
+			case 'image/jpeg':
+				$image = imagecreatefromjpeg($filename);
+				break;
+			case 'image/png':
+				$image = imagecreatefrompng($filename);
+				break;
+			case 'image/gif':
+				$image = imagecreatefromgif($filename);
+				break;
+			case 'image/webp':
+				$image = imagecreatefromwebp($filename);
+				break;
+			default:
+				return;
+				break;
+		}
+
+		$src_width 	= imagesx($image);
+		$src_height = imagesy($image);
+
+		if($src_width > $src_height)
+		{
+			if($src_width < $max_size)
+			{
+				$max_size = $src_width;
+			}
+
+			$dst_width 	= $max_size;
+			$dst_height = ($src_height / $src_width) * $max_size;
+		}else{
+			
+			if($src_height < $max_size)
+			{
+				$max_size = $src_height;
+			}
+
+			$dst_height = $max_size;
+			$dst_width 	= ($src_width / $src_height) * $max_size;
+		}
+
+		$dst_height = round($dst_height);
+		$dst_width 	= round($dst_width);
+
+		$dst_image = imagecreatetruecolor($dst_width, $dst_height);
+		imagecopyresampled($dst_image, $image, 0, 0, 0, 0, $dst_width, $dst_height, $src_width, $src_height);
+		
+		switch ($type) {
+			case 'image/jpeg':
+				imagejpeg($dst_image, $filename, 90);
+				break;
+			case 'image/png':
+				imagepng($dst_image, $filename, 90);
+				break;
+			case 'image/gif':
+				imagegif($dst_image, $filename, 90);
+				break;
+			case 'image/webp':
+				imagewebp($dst_image, $filename, 90);
+				break;
+
+		}
+
+	}
+}
+
 
 
 
@@ -96,7 +182,7 @@ function logged_in() {
     return false;
 }
 
-//  create_tables();
+// create_tables();
 function create_tables()
 {
     $string = "mysql:host=localhost;port=3307"; // Adjust the port as needed
