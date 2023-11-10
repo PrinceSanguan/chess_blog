@@ -62,9 +62,13 @@
 
       <div class="my-2">
         <label class="d-block">
-          <img class="mx-auto d-block image-preview-edit" src="<?=get_image($row["image"])?>" style="cursor: pointer;width: 150px;height: 150px;object-fit: cover;">
+          <img class="mx-auto d-block image-preview-edit" src="<?=get_image('')?>" style="cursor: pointer;width: 150px;height: 150px;object-fit: cover;">
           <input onchange="display_image_edit(this.files[0])" type="file" name="image" class="d-none">
+          
         </label>
+        <?php if(!empty($errors['image'])):?>
+		      <div class="text-danger"><?=$errors['image']?></div>
+		    <?php endif;?>
 
         <script>
 
