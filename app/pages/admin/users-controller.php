@@ -44,6 +44,30 @@
       {
         $errors["password"] = "Passwords do not match";
       }
+
+
+      //validate image
+      $allowed = ['image/jpeg','image/png','image/webp'];
+      if(!empty($_FILES['image']['name']))
+      {
+        $destination = "";
+        if(!in_array($_FILES['image']['type'], $allowed))
+        {
+          $errors['image'] = "Image format not supported";
+        }else
+        {
+          $folder = "uploads/";
+          if(!file_exists($folder))
+          {
+            mkdir($folder, 0777, true);
+          }
+
+          $destination = $folder . time() . $_FILES['image']['name'];
+          move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+          resize_image($destination);
+        }
+
+      }
     
     
       if(empty($errors)) {
@@ -51,10 +75,16 @@
         $data = [];
         $data["username"] = $_POST["username"];
         $data["email"] = $_POST["email"];
-        $data["role"] = "user";
+        $data["role"] = $_POST["role"];
         $data["password"] = $_POST["password"];
     
         $query = "insert into users (username, email, password, role) values (:username, :email, :password, :role)";
+        
+        if(!empty($destination)) {
+          $data['image']     = $destination;
+          $query = "insert into users (username,email,password,role,image) values (:username,:email,:password,:role,:image)";
+        }
+        
         query($query, $data);
     
         redirect("admin/users");
@@ -142,22 +172,32 @@
             $data = [];
             $data["username"] = $_POST["username"];
             $data["email"] = $_POST["email"];
-            $data["role"] = $row["role"];
+            $data["role"] = $_POST["role"];
             $data["id"] = $id;
+
+            $password_str = "";
+            $image_str = "";
             
         
-            if (empty($_POST["password"])) {
-              $query = "update users set username = :username, email = :email, role = :role where id = :id limit 1";
-            }else {
-              $data["password"] = $_POST["password"];
-              $query = "update users set username = :username, email = :email, password = :password, role = :role where id = :id limit 1";
+            if(!empty($_POST['password']))
+                {
+                  $password_str = "password = :password, ";
+                }
+
+                if(!empty($destination))
+                {
+                  $image_str = "image = :image, ";
+                  $data['image']       = $destination;
+                }
+              
+                $query = "update users set username = :username, email = :email, $password_str $image_str role = :role where id = :id limit 1";
+
+              query($query, $data);
+              redirect('admin/users');
+
             }
-            query($query, $data);
-        
-            redirect("admin/users");
           }
         }
-      }
     }else
     if($action == "delete") {
 
@@ -176,9 +216,11 @@
             $data = [];
             $data["id"] = $id;
             
-              $query = "delete from users where id = :id limit 1";
-            
+            $query = "delete from users where id = :id limit 1";
             query($query, $data);
+
+            if(file_exists($row["image"]))
+            unlink($row["image"]);
         
             redirect("admin/users");
           }

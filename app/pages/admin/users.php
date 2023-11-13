@@ -1,13 +1,30 @@
 <?php if($action == "add"):?>
 
   <div class="col-md-6 mx-auto">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
 
-      <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Create Account</h1>
+      <h1 class="h3 mb-3 fw-normal">Create Account</h1>
 
       <?php if(!empty($errors)):?>
         <div class="alert alert-danger">Please fix the error below</div>
       <?php endif;?>
+
+      <div class="my-2">
+      <label class="d-block">
+	    		<img class="mx-auto d-block image-preview-edit" src="<?=get_image('')?>" style="cursor: pointer;width: 150px;height: 150px;object-fit: cover;">
+	    		<input onchange="display_image_edit(this.files[0])" type="file" name="image" class="d-none">
+	    	</label>
+	    	<?php if(!empty($errors['image'])):?>
+		      <div class="text-danger"><?=$errors['image']?></div>
+		    <?php endif;?>
+
+	    	<script>
+	    		
+	    		function display_image_edit(file)
+	    		{
+	    			document.querySelector(".image-preview-edit").src = URL.createObjectURL(file);
+	    		}
+	    	</script>
 
       <div class="form-floating">
         <input value="<?= old_value("username") ?>" type="text" name="username" class="form-control mb-2" id="floatingInput" placeholder="Username">
@@ -24,6 +41,17 @@
       </div>
       <?php if (!empty($errors["email"])):?>
         <div class="text-danger"><?=$errors["email"]?></div>
+      <?php endif;?>
+
+      <div class="form-floating">
+        <select name="role" class="form-select my-3">
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+        </select>
+        <label for="floatingInput">Role</label>
+      </div>
+      <?php if (!empty($errors["role"])):?>
+        <div class="text-danger"><?=$errors["role"]?></div>
       <?php endif;?>
 
 
@@ -50,7 +78,7 @@
 <?php elseif($action == "edit"):?>
 
   <div class="col-md-6 mx-auto">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
 
       <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Edit Account</h1>
 
@@ -61,22 +89,21 @@
       <?php endif;?>
 
       <div class="my-2">
-        <label class="d-block">
-          <img class="mx-auto d-block image-preview-edit" src="<?=get_image('')?>" style="cursor: pointer;width: 150px;height: 150px;object-fit: cover;">
-          <input onchange="display_image_edit(this.files[0])" type="file" name="image" class="d-none">
-          
-        </label>
-        <?php if(!empty($errors['image'])):?>
-		      <div class="text-danger"><?=$errors['image']?></div>
-		    <?php endif;?>
+          <label class="d-block">
+		    		<img class="mx-auto d-block image-preview-edit" src="<?=get_image($row['image'])?>" style="cursor: pointer;width: 150px;height: 150px;object-fit: cover;">
+		    		<input onchange="display_image_edit(this.files[0])" type="file" name="image" class="d-none">
+		    	</label>
+		    	<?php if(!empty($errors['image'])):?>
+			      <div class="text-danger"><?=$errors['image']?></div>
+			    <?php endif;?>
 
-        <script>
-
-        function display_image_edit(file) {
-          document.querySelector(".image-preview-edit").src = URL.createObjectURL(file);
-        }
-
-        </script>
+		    	<script>
+		    		
+		    		function display_image_edit(file)
+		    		{
+		    			document.querySelector(".image-preview-edit").src = URL.createObjectURL(file);
+		    		}
+		    	</script>
       </div>
 
       <div class="form-floating">
@@ -95,6 +122,20 @@
       <?php if(!empty($errors["email"])):?>
         <div class="text-danger"><?=$errors["email"]?></div>
       <?php endif;?>
+
+
+      <div class="form-floating">
+        <select name="role" class="form-select my-3">
+          <option <?= old_select("role", "user", $row["role"]) ?> value="user">User</option>
+          <option <?= old_select("role", "admin", $row["role"]) ?> value="admin">Admin</option>
+        </select>
+        <label for="floatingInput">Role</label>
+      </div>
+      <?php if (!empty($errors["role"])):?>
+        <div class="text-danger"><?=$errors["role"]?></div>
+      <?php endif;?>
+
+
 
 
       <div class="form-floating">
@@ -188,8 +229,11 @@
       </tr>
 
       <?php
+        $limit = 10;
+        $offset = ($PAGE["page_number"] - 1) * $limit;
 
-        $query = "select * from users order by id desc";
+
+        $query = "select * from users order by id desc limit $limit offset $offset";
         $rows = query($query);
 
       ?>
@@ -222,9 +266,17 @@
     </table>
 
         <div class="col-md-12 mb-4">
-          <button class="btn btn-primary">First Page</button>
-          <button class="btn btn-primary">Prev Page</button>
+          <a href="<?=$PAGE['first_link']?>">
+            <button class="btn btn-primary">First Page</button>
+          </a>
+
+          <a href="<?=$PAGE['prev_link']?>">
+            <button class="btn btn-primary">Prev Page</button>
+            </a>
+
+          <a href="<?=$PAGE['next_link']?>">
           <button class="btn btn-primary float-end">Next Page</button>
+          </a>
         </div>
 
   </div>

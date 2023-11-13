@@ -62,6 +62,20 @@ function old_checked($key, $default = "") {
   
 }
 
+
+function old_select($key, $value, $default = "") {
+
+  if(!empty($_POST[$key]) && $_POST[$key] == $value)
+      return "selected";
+
+  if($default == $value)
+      return "selected";
+
+  return "";
+  
+}
+
+
 function get_image($file)
 {
 	$file = $file ?? '';
@@ -70,7 +84,7 @@ function get_image($file)
 		return ROOT.'/'.$file;
 	}
 
-	return ROOT.'/assets/images/3.jpg';
+	return ROOT.'/assets/images/no_image.jpg';
 }
 
 
@@ -90,76 +104,70 @@ function str_to_url($url)
 
 function resize_image($filename, $max_size = 1000)
 {
-	
-	if(file_exists($filename))
-	{
-		$type = mime_content_type($filename);
-		switch ($type) {
-			case 'image/jpeg':
-				$image = imagecreatefromjpeg($filename);
-				break;
-			case 'image/png':
-				$image = imagecreatefrompng($filename);
-				break;
-			case 'image/gif':
-				$image = imagecreatefromgif($filename);
-				break;
-			case 'image/webp':
-				$image = imagecreatefromwebp($filename);
-				break;
-			default:
-				return;
-				break;
-		}
+    if (file_exists($filename)) {
+        $img_ex = pathinfo($filename, PATHINFO_EXTENSION);
+        $img_ex_lc = strtolower($img_ex);
 
-		$src_width 	= imagesx($image);
-		$src_height = imagesy($image);
+        switch ($img_ex_lc) {
+            case 'jpg':
+            case 'jpeg':
+                $image = imagecreatefromjpeg($filename);
+                break;
+            case 'png':
+                $image = imagecreatefrompng($filename);
+                break;
+            case 'gif':
+                $image = imagecreatefromgif($filename);
+                break;
+            case 'webp':
+                $image = imagecreatefromwebp($filename);
+                break;
+            default:
+                return; // Unsupported image type
+        }
 
-		if($src_width > $src_height)
-		{
-			if($src_width < $max_size)
-			{
-				$max_size = $src_width;
-			}
+        $src_width = imagesx($image);
+        $src_height = imagesy($image);
 
-			$dst_width 	= $max_size;
-			$dst_height = ($src_height / $src_width) * $max_size;
-		}else{
-			
-			if($src_height < $max_size)
-			{
-				$max_size = $src_height;
-			}
+        if ($src_width > $src_height) {
+            if ($src_width < $max_size) {
+                $max_size = $src_width;
+            }
 
-			$dst_height = $max_size;
-			$dst_width 	= ($src_width / $src_height) * $max_size;
-		}
+            $dst_width = $max_size;
+            $dst_height = ($src_height / $src_width) * $max_size;
+        } else {
+            if ($src_height < $max_size) {
+                $max_size = $src_height;
+            }
 
-		$dst_height = round($dst_height);
-		$dst_width 	= round($dst_width);
+            $dst_height = $max_size;
+            $dst_width = ($src_width / $src_height) * $max_size;
+        }
 
-		$dst_image = imagecreatetruecolor($dst_width, $dst_height);
-		imagecopyresampled($dst_image, $image, 0, 0, 0, 0, $dst_width, $dst_height, $src_width, $src_height);
-		
-		switch ($type) {
-			case 'image/jpeg':
-				imagejpeg($dst_image, $filename, 90);
-				break;
-			case 'image/png':
-				imagepng($dst_image, $filename, 90);
-				break;
-			case 'image/gif':
-				imagegif($dst_image, $filename, 90);
-				break;
-			case 'image/webp':
-				imagewebp($dst_image, $filename, 90);
-				break;
+        $dst_height = round($dst_height);
+        $dst_width = round($dst_width);
 
-		}
+        $dst_image = imagecreatetruecolor($dst_width, $dst_height);
+        imagecopyresampled($dst_image, $image, 0, 0, 0, 0, $dst_width, $dst_height, $src_width, $src_height);
 
-	}
+        switch ($img_ex_lc) {
+            case 'jpg':
+            case 'jpeg':
+                imagejpeg($dst_image, $filename, 90);
+                break;
+            case 'png':
+                imagepng($dst_image, $filename, 9); // Changed compression quality
+                break;
+            case 'gif':
+                imagegif($dst_image, $filename);
+                break;
+            case 'webp':
+                imagewebp($dst_image, $filename, 90);
+                break;
+        }
+    }
 }
-
 
 
 
@@ -218,13 +226,14 @@ $result = [
   "next_link" =>$next_link,
   "prev_link" =>$prev_link,
   "first_link" =>$first_link,
+  "page_number" =>$page_number,
 ];
 
 return $result;
 
 }
 
-// create_tables();
+create_tables();
 function create_tables()
 {
     $string = "mysql:host=localhost;port=3307"; // Adjust the port as needed
