@@ -134,19 +134,19 @@
     <?php endif;?>
 
     <div class="form-floating">
-      <div class="form-control mb-2"><?=old_value("username", $row["username"])?></div>
+      <div class="form-control mb-2"><?=old_value("category", $row["category"])?></div>
     </div>
-    <?php if(!empty($errors["username"])):?>
-      <div class="text-danger"><?=$errors["username"]?></div>
+    <?php if(!empty($errors["category"])):?>
+      <div class="text-danger"><?=$errors["category"]?></div>
     <?php endif;?>
 
 
     <div class="form-floating">
-    <div class="form-control mb-2"><?=old_value("email", $row["email"])?></div>
+    <div class="form-control mb-2"><?=old_value("slug", $row["slug"])?></div>
     </div>
 
-    <?php if(!empty($errors["email"])):?>
-      <div class="text-danger"><?=$errors["email"]?></div>
+    <?php if(!empty($errors["slug"])):?>
+      <div class="text-danger"><?=$errors["slug"]?></div>
     <?php endif;?>
 
     <a href="<?=ROOT?>/admin/categories">
