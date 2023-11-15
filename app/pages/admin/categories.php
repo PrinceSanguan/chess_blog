@@ -43,68 +43,21 @@
       <div class="alert alert-danger">Please fix the error below</div>
     <?php endif;?>
 
-    <div class="my-2">
-        <label class="d-block">
-          <img class="mx-auto d-block image-preview-edit" src="<?=get_image($row['image'])?>" style="cursor: pointer;width: 150px;height: 150px;object-fit: cover;">
-          <input onchange="display_image_edit(this.files[0])" type="file" name="image" class="d-none">
-        </label>
-        <?php if(!empty($errors['image'])):?>
-          <div class="text-danger"><?=$errors['image']?></div>
-        <?php endif;?>
-
-        <script>
-          
-          function display_image_edit(file)
-          {
-            document.querySelector(".image-preview-edit").src = URL.createObjectURL(file);
-          }
-        </script>
-    </div>
-
     <div class="form-floating">
-      <input value="<?= old_value("username", $row["username"])?>" type="text" name="username" class="form-control mb-2" id="floatingInput" placeholder="Username">
-      <label for="floatingInput">Username</label>
+      <input value="<?= old_value("category", $row["category"])?>" type="text" name="category" class="form-control mb-2" id="floatingInput" placeholder="category">
+      <label for="floatingInput">Category</label>
     </div>
-    <?php if(!empty($errors["username"])):?>
-      <div class="text-danger"><?=$errors["username"]?></div>
-    <?php endif;?>
-
-
-    <div class="form-floating">
-      <input value="<?= old_value("email", $row["email"])?>" name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
-    </div>
-    <?php if(!empty($errors["email"])):?>
-      <div class="text-danger"><?=$errors["email"]?></div>
+    <?php if(!empty($errors["category"])):?>
+      <div class="text-danger"><?=$errors["category"]?></div>
     <?php endif;?>
 
 
     <div class="form-floating">
       <select name="role" class="form-select my-3">
-        <option <?= old_select("role", "user", $row["role"]) ?> value="user">User</option>
-        <option <?= old_select("role", "admin", $row["role"]) ?> value="admin">Admin</option>
+        <option <?= old_select("disabled", "0", $row["disabled"]) ?> value="0">Yes</option>
+        <option <?= old_select("disabled", "1", $row["disabled"]) ?> value="1">No</option>
       </select>
-      <label for="floatingInput">Role</label>
-    </div>
-    <?php if (!empty($errors["role"])):?>
-      <div class="text-danger"><?=$errors["role"]?></div>
-    <?php endif;?>
-
-
-
-
-    <div class="form-floating">
-      <input value="<?= old_value("password") ?>" name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password (Leave empty to keep old one)</label>
-    </div>
-    <?php if(!empty($errors["password"])):?>
-      <div class="text-danger"><?=$errors["password"]?></div>
-    <?php endif;?>
-
-
-    <div class="form-floating">
-      <input value="<?= old_value("retype_password") ?>" name="retype_password" type="password" class="form-control" id="floatingPassword" placeholder="Retype Password">
-      <label for="floatingPassword">Retype Password</label>
+      <label for="floatingInput">Active</label>
     </div>
 
     <a href="<?=ROOT?>/admin/categories">
