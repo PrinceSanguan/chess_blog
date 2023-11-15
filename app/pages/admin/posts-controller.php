@@ -13,9 +13,9 @@
         $errors["title"] = "A title is required";
       }
 
-      if(empty($_POST["category"]))
+      if(empty($_POST["category_id"]))
       {
-        $errors["category"] = "A category is required";
+        $errors["category_id"] = "A category is required";
       }
 
       //validate image
@@ -74,13 +74,13 @@
         
         query($query, $data);
     
-        redirect("admin/users");
+        redirect("admin/posts");
       }
     }
     }else
     if($action == "edit") {
 
-        $query = "select * from users where id = :id limit 1";
+        $query = "select * from posts where id = :id limit 1";
         $row = query_row($query, ["id"=>$id]);
 
         if(!empty($_POST)) {
@@ -90,44 +90,16 @@
           // validate
           $errors = [];
         
-          if(empty($_POST["username"]))
+          if(empty($_POST["title"]))
           {
-            $errors["username"] = "A username is required";
-          }else
-          if(!preg_match("/^[a-zA-Z]+$/", $_POST["username"]))
-          {
-            $errors["username"] = "Username can only have letters and no spaces";
+            $errors["title"] = "A title is required";
           }
-        
-          $query = "select id from users where email = :email && id != :id limit 1";
-          $email = query($query, ["email"=>$_POST["email"],"id"=>$id]);
-        
-          if(empty($_POST["email"]))
+    
+          if(empty($_POST["category_id"]))
           {
-            $errors["email"] = "A email is required";
-          }else
-          if(!filter_var($_POST["email"],FILTER_VALIDATE_EMAIL))
-          {
-            $errors["email"] = "Email not Valid";
-          }else
-          if($email)
-          {
-            $errors["email"] = "That email is already in use";
+            $errors["category_id"] = "A category is required";
           }
-        
-        
-          if (empty($_POST["password"])) 
-          {
-           
-          } elseif (strlen($_POST["password"]) < 8) 
-          {
-            $errors["password"] = "Password must be 8 characters or more";
-          } elseif ($_POST["password"] !== $_POST["retype_password"]) 
-          {
-            $errors["password"] = "Passwords do not match";
-          }
-
-
+    
           //validate image
           $allowed = ['image/jpeg','image/png','image/webp'];
           if(!empty($_FILES['image']['name']))
@@ -143,16 +115,13 @@
               {
                 mkdir($folder, 0777, true);
               }
-
+    
               $destination = $folder . time() . $_FILES['image']['name'];
               move_uploaded_file($_FILES['image']['tmp_name'], $destination);
               resize_image($destination);
             }
-
+    
           }
-
-
-        
         
           if(empty($errors)) {
             // save to database
@@ -162,14 +131,8 @@
             $data["role"] = $_POST["role"];
             $data["id"] = $id;
 
-            $password_str = "";
             $image_str = "";
             
-        
-            if(!empty($_POST['password']))
-                {
-                  $password_str = "password = :password, ";
-                }
 
                 if(!empty($destination))
                 {
@@ -177,10 +140,10 @@
                   $data['image']       = $destination;
                 }
               
-                $query = "update users set username = :username, email = :email, $password_str $image_str role = :role where id = :id limit 1";
+                $query = "update posts set username = :username, email = :email, $password_str $image_str role = :role where id = :id limit 1";
 
               query($query, $data);
-              redirect('admin/users');
+              redirect('admin/posts');
 
             }
           }
@@ -188,7 +151,7 @@
     }else
     if($action == "delete") {
 
-        $query = "select * from users where id = :id limit 1";
+        $query = "select * from posts where id = :id limit 1";
         $row = query_row($query, ["id"=>$id]);
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -203,13 +166,13 @@
             $data = [];
             $data["id"] = $id;
             
-            $query = "delete from users where id = :id limit 1";
+            $query = "delete from posts where id = :id limit 1";
             query($query, $data);
 
             if(file_exists($row["image"]))
             unlink($row["image"]);
         
-            redirect("admin/users");
+            redirect("admin/posts");
           }
         }
       }
