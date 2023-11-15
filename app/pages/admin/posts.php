@@ -131,7 +131,7 @@
       <option value="">--select--</option>
       <?php if(!empty($categories)):?>
         <?php foreach($categories as $cat):?>
-          <option <?=old_select("category_id",$cat["id"],$row["catrgory_id"])?> value="<?=$cat["id"]?>"><?=$cat["category"]?></option>
+          <option <?=old_select("category_id",$cat["id"],$row["category_id"])?> value="<?=$cat["id"]?>"><?=$cat["category"]?></option>
         <?php endforeach;?>
       <?php endif;?>
 
