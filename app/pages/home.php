@@ -83,40 +83,13 @@
     <!-- posting eto yun-->
 
     <div class="row mb-2">
-    <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary-emphasis">Former PUP Team Captain</strong>
-          <h3 class="mb-0">Johnpaul Aquino</h3>
-          <div class="mb-1 text-body-secondary">Born: Januart 7 1995</div>
-          <p class="card-text mb-auto">Galing sa isang Sikat na unibersidad kilalang kilabot ng mga bebot</p>
-          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-            Continue reading
-            <svg class="bi"><use xlink:href="#chevron-right"/></svg>
-          </a>
-        </div>
-        <div class="col-lg-5 col-12 d-lg-block">
-          <img class="bd-placeholder-img w-100" width="200" height="250" src="<?=ROOT?>/assets/images/3.jpg" style="object-fit: cover;" alt="">
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success-emphasis">Secret Weapon of RTU</strong>
-          <h3 class="mb-0">Dionisio Samillano</h3>
-          <div class="mb-1 text-body-secondary">Born: June 7 1996</div>
-          <p class="mb-auto">Pinakatatagong Armas ng RTU kung saan magugulat ang ibang school kapag sya ay Nilabas</p>
-          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-            Continue reading
-            <svg class="bi"><use xlink:href="#chevron-right"/></svg>
-          </a>
-        </div>
-        <div class="col-lg-5 col-12 d-lg-block">
-          <img class="bd-placeholder-img w-100" width="200" height="250" src="<?=ROOT?>/assets/images/4.jpg" style="object-fit: cover;" alt="">
-        </div>
-      </div>
-    </div>
+
+    <?php
+
+      include "../app/pages/includes/post-card.php";
+
+    ?>
+    
   </div>
   <!-- posting end eto yun-->
 
