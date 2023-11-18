@@ -19,7 +19,7 @@
   <header class="p-3 mb-3 border-bottom">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+        <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
           <img class="bi me-2" src="<?=ROOT?>/assets/images/logo.png" width="40" height="32" style="object-fit: cover;">
         </a>
 
@@ -68,8 +68,9 @@
             <li><a class="dropdown-item" href="<?=ROOT?>/logout">Sign out</a></li>
         </ul>
     </div>
+    
     <?php else: ?>
-        <a href="<?=ROOT?>/login" class="text-body-emphasis text-decoration-none">Sign in</a>
+        <!--<a href="<?=ROOT?>/login" class="text-body-emphasis text-decoration-none">Sign in</a>-->
     <?php endif; ?>
 
       </div>

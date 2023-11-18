@@ -12,9 +12,9 @@
     </div>
 
     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3"><a class="text-body-secondary" href="#"><h2><i class="bi bi-facebook"></i></h2></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><h2><i class="bi bi-github"></i></h2></a></li>
-      <li class="ms-3"><a class="text-body-secondary" href="#"><h2><i class="bi bi-linkedin"></i></h2></a></li>
+      <li class="ms-3"><a class="text-body-secondary" href="https://www.facebook.com/Grandmaster1997/"><h2><i class="bi bi-facebook"></i></h2></a></li>
+      <li class="ms-3"><a class="text-body-secondary" href="https://github.com/PrinceSanguan"><h2><i class="bi bi-github"></i></h2></a></li>
+      <li class="ms-3"><a class="text-body-secondary" href="https://www.linkedin.com/in/prince-sanguan-a78988274/"><h2><i class="bi bi-linkedin"></i></h2></a></li>
     </ul>
   </footer>
 </div>

@@ -16,14 +16,15 @@
         $slug = $url[1] ?? null;
 
         if($slug) {
-          $query = "select posts.*,categories.category from posts join categories on posts.category_id where posts.slug = :slug limit 1";
+
+          $query = "SELECT posts.*, categories.category FROM posts JOIN categories ON posts.category_id = categories.id WHERE posts.slug = :slug LIMIT 1";
           $row = query_row($query, ["slug"=>$slug]);
         }
         
         if(!empty($row)) {
       
            ?>
-        <div class="col-md-12">
+        <div class="col-md-8">
           <div class="g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative">
             <div class="col-12 d-lg-block">
                 <img class="bd-placeholder-img w-100" width="100%" src="<?=get_image($row["image"])?>" style="object-fit: cover;" alt="">
