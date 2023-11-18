@@ -57,10 +57,12 @@
     
     
       if(empty($errors)) {
+        $new_content = remove_image_from_content($_POST["content"]);
+
         // save to database
         $data = [];
         $data["title"] = $_POST["title"];
-        $data["content"] = $_POST["content"];
+        $data["content"] = $new_content;
         $data["category_id"] = $_POST["category_id"];
         $data["slug"] = $slug;
         $data["user_id"] = user("id");
@@ -124,10 +126,14 @@
           }
         
           if(empty($errors)) {
+
+            $new_content = remove_image_from_content($_POST["content"]);
+            $new_content = remove_root_from_content($new_content);
+
             // save to database
             $data = [];
             $data["title"] = $_POST["title"];
-            $data["content"] = $_POST["content"];
+            $data["content"] = $new_content;
             $data["category_id"] = $_POST["category_id"];
             $data["id"] = $id;
 

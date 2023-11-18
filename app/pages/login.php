@@ -14,7 +14,7 @@ if (!empty($_POST)) {
     {
       // Passwords match; grant access
       authenticate($row[0]);
-      redirect("admin");
+      redirect("admin/dashboard");
 
     }else{
       $errors["email"] = "Wrong email or password";

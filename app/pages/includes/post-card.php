@@ -9,7 +9,6 @@
         </a>
 
           <div class="mb-1 text-body-secondary"><?=date("jS M, Y", strtotime($row["date"]))?></div>
-          <p class="card-text mb-auto"><?=esc(substr($row["content"], 0, 200))?></p>
           <a href="<?=ROOT?>/post/<?=$row["slug"]?>" class="icon-link gap-1 icon-link-hover stretched-link">
             Continue reading...
             <svg class="bi"><use xlink:href="#chevron-right"/></svg>

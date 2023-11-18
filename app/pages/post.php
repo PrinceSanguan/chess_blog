@@ -32,7 +32,7 @@
                 <strong class="d-inline-block mb-2 text-primary-emphasis"><?=esc($row["category"] ?? "Unknown")?></strong>
                 <h3 class="mb-0"><?=esc($row["title"])?></h3>
                 <div class="mb-1 text-body-secondary"><?=date("jS M, Y", strtotime($row["date"]))?></div>
-                <p class="card-text mb-auto"><?=nl2br(esc($row["content"]))?></p>
+                <p class="card-text mb-auto"><?=nl2br(add_root_to_images($row["content"]))?></p>
               </div>
           </div>
         </div>
