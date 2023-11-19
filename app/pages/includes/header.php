@@ -6,6 +6,7 @@
     <meta name="generator" content="Hugo 0.118.2">
     <title>Home - <?=APP_NAME?></title>
 
+    <link rel="icon" type="image/png" href="<?=ROOT?>/assets/images/chess-icon.png">
     <link href="<?=ROOT?>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=ROOT?>/assets/css/bootstrap-icons.css" rel="stylesheet">
 
@@ -20,7 +21,7 @@
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-          <img class="bi me-2" src="<?=ROOT?>/assets/images/logo.png" width="40" height="32" style="object-fit: cover;">
+          <img class="bi me-2" src="<?=ROOT?>/assets/images/chess-icon.png" width="40" height="32" style="object-fit: cover;">
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">

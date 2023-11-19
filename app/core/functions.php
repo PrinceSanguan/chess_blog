@@ -291,7 +291,7 @@ return $result;
 
 }
 
-create_tables();
+//create_tables();
 function create_tables()
 {
     $string = "mysql:host=localhost;port=3307"; // Adjust the port as needed

@@ -178,7 +178,7 @@ if (!empty($_POST)) {
 <main class="form-signin w-100 m-auto">
   <form method="post">
     <a href="home">
-      <img class="mb-4 shadow" src="<?=ROOT?>/assets/images/logo.png" alt="" width="300" height="57" style="object-fit: fill;">
+      <img class="mb-4 shadow" src="<?=ROOT?>/assets/images/chess-slider3.jpg" alt="" width="300" height="57" style="object-fit: fill;">
     </a>
     <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Please sign in</h1>
 
