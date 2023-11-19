@@ -77,7 +77,7 @@ if(!empty($_POST)) {
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-    <link href="<?=ROOT?>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost/chess_blog/public/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -160,7 +160,7 @@ if(!empty($_POST)) {
 
     
     <!-- Custom styles for this template -->
-    <link href="<?=ROOT?>/assets/css/sign-in.css" rel="stylesheet">
+    <link href="http://localhost/chess_blog/public/assets/css/sign-in.css" rel="stylesheet">
   </head>
   <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -218,7 +218,7 @@ if(!empty($_POST)) {
 <main class="form-signin w-100 m-auto">
   <form method="post">
     <a href="home">
-      <img class="mb-4 shadow" src="<?=ROOT?>/assets/images/logo.png" alt="" width="300" height="57" style="object-fit: fill;">
+      <img class="mb-4 shadow" src="http://localhost/chess_blog/public/assets/images/logo.png" alt="" width="300" height="57" style="object-fit: fill;">
     </a>
     <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Create Account</h1>
 
@@ -258,7 +258,7 @@ if(!empty($_POST)) {
       <label for="floatingPassword">Retype Password</label>
     </div>
 
-    <div class="my-2">Already have an Account? <a href="<?=ROOT?>/login">Login here</a></div>
+    <div class="my-2">Already have an Account? <a href="http://localhost/chess_blog/public/login">Login here</a></div>
 
     <div class="form-check text-start my-3">
       <input <?= old_checked("terms")?> name="terms" class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
@@ -276,7 +276,7 @@ if(!empty($_POST)) {
     <p class="mt-5 mb-3 text-body-secondary" style="text-align: center;">&copy; <?php echo date("Y")?></p>
   </form>
 </main>
-<script src="<?=ROOT?>/assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="http://localhost/chess_blog/public/assets/dist/js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>

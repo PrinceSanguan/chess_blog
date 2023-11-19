@@ -1,5 +1,5 @@
    <?php
-    include "../app/pages/includes/header.php";
+    include "./app/pages/includes/header.php";
   ?>
 
     <h3 class="mx-4">Featured</h3>
@@ -16,7 +16,7 @@
       if($rows) {
 
         foreach ($rows as $row) {
-          include "../app/pages/includes/post-card.php";
+          include "./app/pages/includes/post-card.php";
         }
         
       }else {
@@ -30,6 +30,6 @@
   <!-- posting end eto yun-->
 
   <?php
-    include "../app/pages/includes/footer.php";
+    include "./app/pages/includes/footer.php";
   ?>
 

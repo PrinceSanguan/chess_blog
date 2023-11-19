@@ -1,5 +1,5 @@
 <?php
-    include "../app/pages/includes/header.php";
+    include "./app/pages/includes/header.php";
   ?>
 
 <div class="mx-auto col-md-10">
@@ -27,7 +27,7 @@
         if(!empty($rows))
         {
           foreach ($rows as $row) {
-            include '../app/pages/includes/post-card.php';
+            include './app/pages/includes/post-card.php';
           }
 
         }else{
@@ -55,6 +55,6 @@
     </div>
 
   <?php
-    include "../app/pages/includes/footer.php";
+    include "./app/pages/includes/footer.php";
   ?>
 

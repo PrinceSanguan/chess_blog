@@ -81,7 +81,7 @@
   <?php
 
   if($url[0] == "home")
-    include "../app/pages/includes/slider.php";
+    include "./app/pages/includes/slider.php";
   ?>
 
   <main class="p-2">
