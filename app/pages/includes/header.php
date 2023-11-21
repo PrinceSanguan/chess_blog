@@ -27,7 +27,7 @@
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="<?=ROOT?>" class="nav-link px-2 <?=$url[0] == "home" ? "link-primary" : "link-dark" ?>">Home</a></li>
           <li><a href="<?=ROOT?>/blog" class="nav-link px-2 <?=$url[0] == "blog" ? "link-primary" : "link-dark" ?>">Blog</a></li>
-          <li><a href="<?=ROOT?>/search" class="nav-link px-2 <?=$url[0] == "search" ? "link-primary" : "link-dark" ?>">Search</a></li>
+          <li><a href="<?=ROOT?>/books" class="nav-link px-2 <?=$url[0] == "books" ? "link-primary" : "link-dark" ?>">Books</a></li>
           <li>
             <span class="nav-link px-2 link-dark dropdown text-end">
               <a href="#" class="d-block <?=$url[0] =='category' ? 'link-primary':'link-dark'?> text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

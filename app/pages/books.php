@@ -4,7 +4,7 @@
 
 <div class="mx-auto col-md-10">
 
-      <h3 class="mx-4">Search</h3>
+      <h3 class="mx-4">Books</h3>
 
       <!-- posting eto yun-->
 
