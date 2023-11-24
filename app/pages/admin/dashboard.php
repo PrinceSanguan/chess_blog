@@ -48,6 +48,7 @@
 			$query = "select count(id) as num from posts";
 			$res = query_row($query);
 		?>
+
 		<h1 class="text-primary"><?=$res['num'] ?? 0?></h1>
 	</div>
 
