@@ -35,7 +35,13 @@
                   Books
               </a>
               <ul class="dropdown-menu" role="menu">
-                  <li><a class="dropdown-item fs-6" href="<?=ROOT?>/woodpecker">The Woodpecker Method</a></li>
+                <li><a class="dropdown-item" href="<?=ROOT?>/woodpecker">The Woodpecker Method</a></li>
+                <li><a class="dropdown-item" href="<?=ROOT?>/garrykasparov">Garry Kasparov Greatest Games</a></li>
+                   <style>
+                      .dropdown-menu .dropdown-item {
+                      font-size: 0.80rem; /* Adjust the value as needed */
+                      }
+                    </style>
               </ul>
           </li>
 <!------------------------------------------Books Dropdown------------------------------------------------->
