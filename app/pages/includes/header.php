@@ -35,7 +35,7 @@
                   Books
               </a>
               <ul class="dropdown-menu" role="menu">
-                  <li><a class="dropdown-item" href="<?=ROOT?>/chess1">The Woodpecker Method</a></li>
+                  <li><a class="dropdown-item fs-6" href="<?=ROOT?>/woodpecker">The Woodpecker Method</a></li>
               </ul>
           </li>
 <!------------------------------------------Books Dropdown------------------------------------------------->
